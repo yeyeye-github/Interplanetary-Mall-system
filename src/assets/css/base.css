@@ -60,7 +60,7 @@ body {
     *zoom: 1
 }
 
-@media screen and (max-width: 1980px) {
+@media screen and (max-width: 1500px) {
     body{
         width: 1200px;
     }
