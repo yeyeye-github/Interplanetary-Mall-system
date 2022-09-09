@@ -81,7 +81,7 @@
           <li>|</li>
           <li class="zankai" @mouseover="isShowNav = true"
             @mouseleave="isShowNav = false">
-            <a href="#">网站导航 ▽</a>
+            <a href="#" @click.prevent="($evnet)={}">网站导航 ▽</a>
             <div class="cover" v-show="isShowNav"></div>
             <div class="showElsePanel2" v-show="isShowNav">
               <div style="display: inline-block;width: 310px;border-right:1px solid black">
