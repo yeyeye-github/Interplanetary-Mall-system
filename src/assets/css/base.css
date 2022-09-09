@@ -59,3 +59,9 @@ body {
 .clearfix {
     *zoom: 1
 }
+
+@media screen and (max-width: 1980px) {
+    body{
+        width: 1200px;
+    }
+}
