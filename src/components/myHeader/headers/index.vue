@@ -114,7 +114,7 @@ export default {
   top: 30px;
 }
 .search button:hover {
-  background-color: #26885f;
+  background-color: #267c88;
 }
 .search ul {
   position: absolute;
