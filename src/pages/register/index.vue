@@ -75,7 +75,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from "axios";
 export default {
   name: "register",
   data() {
@@ -126,6 +126,7 @@ export default {
         this.$refs.a.className = "ii";
         this.$refs.a.classList.add("iiGreen");
       } else {
+        this.ts0 = "提示：账号字符长度在6~15之间，不能有特殊符号";
         this.userInforJudge.username = false;
         this.$refs.a.className = "ii";
         this.$refs.a.classList.add("iiRed");
@@ -189,19 +190,24 @@ export default {
         username: this.userInfor.username,
         password: this.userInfor.password,
         email: this.userInfor.email,
-      }
+      };
       axios
         .post("http://124.221.198.142:5005/api/userlogin", tem)
         .then((res) => {
           console.log(res.data);
-          if(res.data.code == '200'){
+          if (res.data.code == "200") {
             this.zzcg = true;
+            alert("注册成功！");
             setTimeout(() => {
-              this.$router.replace('/home')
+              this.$router.replace("/home");
             }, 1000);
+          } else {
+            this.userInforJudge.username = false;
+            this.$refs.a.className = "ii";
+            this.$refs.a.classList.add("iiRed");
+            this.ts0 = "提示：" + res.data.msg;
           }
         });
-
     },
   },
 };
@@ -353,7 +359,7 @@ export default {
 }
 .tyshow {
   position: absolute;
-  left: 112px;
+  left: 135px;
   width: 120px;
   height: 30px;
   top: -10px;
