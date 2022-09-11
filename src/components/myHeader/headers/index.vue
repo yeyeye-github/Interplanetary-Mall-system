@@ -68,9 +68,9 @@ export default {
   align-items: center;
 }
 .logo {
-  width: 100px;
-  height: 100px;
-  margin-left: 45px;
+  width: 150px;
+  height: 130px;
+  margin-left: 15px;
 }
 .searchAndElse {
   width: 850px;

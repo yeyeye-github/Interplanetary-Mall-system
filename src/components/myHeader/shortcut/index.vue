@@ -39,7 +39,8 @@
         <ul class="right">
           <li>
             <a href="#">您好，请登录</a>
-            <a href="#" class="style-green">免费注册</a>
+            <router-link class="style-green" :to="{name:'register'}">免费注册</router-link>
+            <!-- <a href="#" class="style-green">免费注册</a> -->
           </li>
           <li>|</li>
           <li>

@@ -1,5 +1,6 @@
 import VueRouter from 'vue-router'
 import home from '../pages/home'
+import register from '../pages/register'
 
 
 const router = new VueRouter({
@@ -11,7 +12,14 @@ const router = new VueRouter({
         {
             path:'/home',
             name:'home',
-            component:home
+            component:home,
+            meta: { isRegister: false }
+        },
+        {
+            path:'/register',
+            name:'register',
+            component:register,
+            meta: { isRegister: true }
         }
     ]
 })

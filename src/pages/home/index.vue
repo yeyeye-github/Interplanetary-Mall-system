@@ -277,7 +277,7 @@ export default {
 .fs .subject {
   width: 590px;
   height: 100%;
-  background-color: rgb(241, 211, 211);
+  background-color: rgb(230, 230, 230);
   margin-right: 10px;
 }
 

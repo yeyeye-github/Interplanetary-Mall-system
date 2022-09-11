@@ -1,8 +1,8 @@
 <template>
   <div> 
-    <myHeader></myHeader>
+    <myHeader v-if="!$route.meta.isRegister"></myHeader>
     <router-view></router-view>
-    <Footer></Footer>
+    <Footer v-if="!$route.meta.isRegister"></Footer>
   </div>
 </template>
 
