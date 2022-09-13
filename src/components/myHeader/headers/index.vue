@@ -1,12 +1,12 @@
 <template>
   <div class="w">
     <h1>
-      <a href="#" style="font-size:0"><img class="logo" src="./assets/logo.webp" alt="" />未来跨行星商城系统</a>
+      <router-link to="/home" style="font-size:0"><img class="logo" src="./assets/logo.webp" alt="" />未来跨行星商城系统</router-link>
     </h1>
     <div class="searchAndElse">
       <div class="search">
         <input type="text" class="searchinput" :placeholder="searchPH" />
-        <button>搜索</button>
+        <button @click="toSearch">搜索</button>
         <ul>
           <li v-for="(d, i) in searchRelate" :key="i">
             <a href="#">{{ d }}</a>
@@ -32,6 +32,11 @@
 <script>
 export default {
   name: "headers",
+  methods:{
+    toSearch(){
+      this.$router.push('/search')
+    }
+  },
   data() {
     return {
       searchPH: "行星跃迁引擎",

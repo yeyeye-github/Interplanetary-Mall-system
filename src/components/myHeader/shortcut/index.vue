@@ -37,10 +37,15 @@
 
       <div class="fr">
         <ul class="right">
-          <li>
-            <a href="#">您好，请登录</a>
+          <li v-if="!$store.state.user.username">
+            <router-link to="/login">您好，请登录</router-link>
             <router-link class="style-green" :to="{name:'register'}">免费注册</router-link>
             <!-- <a href="#" class="style-green">免费注册</a> -->
+          </li>
+          <li v-else>
+            您好，
+            <span class="style-green" style="margin-right:10px">{{this.$store.state.user.username}}</span>
+            <a href="#" @click="outlogin" style="margin-right:10px">退出登录</a>
           </li>
           <li>|</li>
           <li>
@@ -238,6 +243,10 @@ export default {
     };
   },
   methods: {
+    async outlogin(){
+      console.log(await this.$api.outlogin())
+      window.location.reload();
+    },
     trueShowPlanet() {
       this.isShowPlanet = true;
     },

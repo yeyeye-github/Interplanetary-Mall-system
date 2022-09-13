@@ -1,6 +1,8 @@
 import VueRouter from 'vue-router'
 import home from '../pages/home'
 import register from '../pages/register'
+import login from '../pages/login'
+import search from '../pages/search'
 
 
 const router = new VueRouter({
@@ -13,13 +15,24 @@ const router = new VueRouter({
             path:'/home',
             name:'home',
             component:home,
-            meta: { isRegister: false }
+            meta: { isRegister: false, islogin:false }
         },
         {
             path:'/register',
             name:'register',
             component:register,
-            meta: { isRegister: true }
+            meta: { isRegister: true },
+        },
+        {
+            path:'/login',
+            name:'login',
+            component:login,
+            meta: { islogin: true },
+        },
+        {
+            path:'/search',
+            name:'search',
+            component:search,
         }
     ]
 })

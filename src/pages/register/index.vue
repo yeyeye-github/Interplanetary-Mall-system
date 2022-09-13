@@ -24,7 +24,7 @@
         <router-link to="/home"><img class="logo" src="./images/logo.webp" alt=""></router-link>
         <span>欢迎注册！</span>
         <div style="flex:1"></div>
-        <span style="font-size: 16px;" class="fr">已有账号？<a class="login" href="#">请登录> </a></span>
+        <span style="font-size: 16px;" class="fr">已有账号？<router-link class="login" to="/login">请登录></router-link></span>
       </div>
     </div>
     <div class="w">
@@ -192,14 +192,14 @@ export default {
         email: this.userInfor.email,
       };
       axios
-        .post("http://124.221.198.142:5005/api/userlogin", tem)
+        .post("/api/userregister", tem)
         .then((res) => {
           console.log(res.data);
           if (res.data.code == "200") {
             this.zzcg = true;
             alert("注册成功！");
             setTimeout(() => {
-              this.$router.replace("/home");
+              this.$router.replace("/login");
             }, 1000);
           } else {
             this.userInforJudge.username = false;
@@ -210,6 +210,12 @@ export default {
         });
     },
   },
+  beforeRouteEnter (to, from, next) {
+    if(sessionStorage.getItem('username')){
+      next(from.path)
+    }
+    next()
+  }
 };
 </script>
 
