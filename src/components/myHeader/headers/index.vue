@@ -5,7 +5,7 @@
     </h1>
     <div class="searchAndElse">
       <div class="search">
-        <input type="text" class="searchinput" :placeholder="searchPH" />
+        <input v-model="searchInput" type="text" class="searchinput" :placeholder="searchPH" />
         <button @click="toSearch">搜索</button>
         <ul>
           <li v-for="(d, i) in searchRelate" :key="i">
@@ -34,7 +34,12 @@ export default {
   name: "headers",
   methods:{
     toSearch(){
-      this.$router.push('/search')
+      const tem = this.searchInput == '' ? '飞船' : this.searchInput
+      this.$store.dispatch('search/seaBreads', tem)
+      // this.$bus.$emit('keywordF', tem)
+      this.$router.push({
+        name:'search',
+      })
     }
   },
   data() {
@@ -59,7 +64,8 @@ export default {
         "跨星系营养支持",
         "星际好物",
       ],
-      shopcarnum:0
+      shopcarnum:0,
+      searchInput:""
     };
   },
 };
