@@ -35,9 +35,11 @@
           <ul>
             <li v-for="(d,i) in goodsShow" :key="d.id">
               <div class="goodsCell">
-                <a style="display:block;height:226.79px;width:226.79px" href="#"><img class="goodsimg" :src="require(`${d.img}`)" alt=""></a>
+                <router-link style="display:block;height:226.79px;width:226.79px" :to="{name:'detail', query:{goodsId:d.id}}"><img class="goodsimg" :src="require(`${d.img}`)" alt=""></router-link>
                 <div class="price">￥{{d.price}}</div>
-                <div class="description"><a href="#" :title="d.title">{{d.title}}</a></div>
+                <div class="description">
+                  <router-link :to="{name:'detail', query:{goodsId:d.id}}" :title="d.title">{{d.title}}</router-link>
+                </div>
                 <div class="evaluation">已有<span>{{d.personNum}}</span>人评价</div>
                 <div class="handle">
                   <a href="#">加入购物车</a>
@@ -68,7 +70,7 @@ export default {
   name: "search",
   data() {
     return {
-      breads: [],
+      breads: this.$store.state.search.breads || [],
       marks: [
         "深空",
         "缔造者",
@@ -121,118 +123,7 @@ export default {
       navs: ["综合", "销量", "新品", "价格", "评价"],
       navscurr: 0,
       pagecurr: 1,
-      goodsAll: [
-        {
-          id: 0,
-          price: "1290,000",
-          img: "./images/goods0.png",
-          title:
-            "深空G-01 两环引擎 追梭光弹 可容纳3人 最长航程300光年 带纳米隐身装置 1光年内即时全息通讯",
-          personNum: 2099,
-          attr: {
-            id: [0, 10, 15, 30, 7, 17, 25],
-          },
-        },
-        {
-          id: 1,
-          price: "320,000",
-          img: "./images/goods1.png",
-          title:
-            "缔造者hl 冲击引擎 追梭光弹 全景感知 可容纳10人 最长航程300光年 带纳米隐身装置 伽玛光帆 1光年内即时全息通讯",
-          personNum: 1066,
-          attr: {
-            id: [1, 12, 19, 18, 31, 7, 17, 16, 25],
-          },
-        },
-        {
-          id: 2,
-          price: "99,000",
-          img: "./images/goods2.png",
-          title:
-            "大米科技s10 两环引擎 机械手 可容纳3人 最长航程300光年 0.3光年内即时通讯",
-          personNum: 5666,
-          attr: {
-            id: [5, 10, 15, 30, 7, 24],
-          },
-        },
-        {
-          id: 3,
-          price: "169,000",
-          img: "./images/goods3.png",
-          title:
-            "多弗洛伊号X 冲击引擎 机械手 全景感知 可容纳5人 最长航程100光年 5光年内即时通讯",
-          personNum: 999,
-          attr: {
-            id: [3, 12, 15, 18, 31, 6, 26],
-          },
-        },
-        {
-          id: 4,
-          price: "213,000",
-          img: "./images/goods4.png",
-          title:
-            "缔造者z 三环引擎 追梭光弹 引力射线 伽玛光帆 纳米隐身 可容纳3人 最长航程100光年 0.3光年内即时通讯",
-          personNum: 2660,
-          attr: {
-            id: [1, 11, 19, 21, 16, 17, 30, 6, 24],
-          },
-        },
-        {
-          id: 5,
-          price: "1,999,000",
-          img: "./images/goods5.png",
-          title:
-            "NOMAN-SKY-9 三环引擎 死光 引力射线 伽玛光帆  纳米隐身 全景感知 可容纳50人 最长航程200光年 10光年内即时通讯",
-          personNum: 7222,
-          attr: {
-            id: [2, 11, 20, 21, 16, 17, 18, 32, 7, 26],
-          },
-        },
-        {
-          id: 6,
-          price: "3,222,999",
-          img: "./images/goods6.png",
-          title:
-            "缔造者-OVER 跃迁引擎 水滴 死光 引力射线 伽玛光帆 纳米隐身 全景感知 机械手 可容纳200人 最长航程1200光年 1000光年内即时通讯",
-          personNum: 10631,
-          attr: {
-            id: [1, 13, 22, 20, 21, 16, 17, 18, 15, 33, 8, 28],
-          },
-        },
-        {
-          id: 7,
-          price: "1530,000",
-          img: "./images/goods7.png",
-          title:
-            "NOMAN-SKY-1 跃迁引擎 死光 引力射线 伽玛光帆 纳米隐身 全景感知 可容纳50人 最长航程200光年 20光年内即时通讯",
-          personNum: 7222,
-          attr: {
-            id: [2, 13, 20, 21, 16, 17, 18, 32, 7, 27],
-          },
-        },
-        {
-          id: 8,
-          price: "876,000",
-          img: "./images/goods8.png",
-          title:
-            "大米科技s50PRO 四环融合 追梭光弹 引力射线 伽玛光帆 全景感知 可容纳10人 最长航程600光年 5光年内即时通讯",
-          personNum: 1362,
-          attr: {
-            id: [5, 14, 19, 21, 16, 18, 31, 8, 26],
-          },
-        },
-        {
-          id: 9,
-          price: "599,000",
-          img: "./images/goods9.png",
-          title:
-            "小宇飞船 四环融合 追梭光弹 机械手 全景感知 可容纳5人 最长航程500光年 15光年内即时通讯",
-          personNum: 809,
-          attr: {
-            id: [4, 14, 19, 15, 18, 31, 8, 27],
-          },
-        },
-      ],
+      goodsAll:[],
       goodsShow: [],
       goodsfuhe: [],
       goodsMoni: [],
@@ -275,24 +166,62 @@ export default {
         "1000人以上": 34,
       },
       breadid: [],
+      ischushihua: false,
     };
   },
   methods: {
+    alldata() {
+      const a = [];
+      for (let index = 0; index < 50; index++) {
+        let tem = {
+          id: 10,
+          price: "999,999,999",
+          img: "./images/test.png",
+          title: "测试商品",
+          personNum: 999,
+          attr: {
+            id: [],
+          },
+        };
+        tem.id = +index + 10;
+        tem.title += (+index + 10).toString();
+        a.push(tem);
+      }
+      this.goodsMoni = a;
+      this.goodsAll.splice(10, 0, ...this.goodsMoni);
+      this.$store.state.allgoods = this.goodsAll;
+      // console.log('数据加载')
+    },
     delBread(d) {
       this.$store.dispatch("search/delBreads", d);
     },
     changeOrder(d, i) {
       if (i == this.navscurr) {
         this.order = !this.order;
+        if (this.navscurr == 0 || this.navscurr == 3) {
+          this.goodsfuhe.reverse();
+        }
       } else {
         this.navscurr = i;
         this.order = false;
+        if (this.navscurr == 3) {
+          this.goodsfuhe.sort((a, b) => {
+            return -(a.price.replace(/,/g, "") - b.price.replace(/,/g, ""));
+          });
+        }
+
+        if (this.navscurr == 0) {
+          this.goodsfuhe.sort((a, b) => {
+            return +a.id - +b.id;
+          });
+        }
       }
     },
     changecurrpage(i) {
       this.pagecurr = i;
     },
     moniData() {
+      // this.goodsAll = this.$store.state.allgoods;
       const a = [];
       for (let index = 0; index < 50; index++) {
         let tem = {
@@ -331,15 +260,26 @@ export default {
       //   this.breads.push(tem)
       // }
     },
+    chushihua() {
+      // console.log("search页加载");
+      this.moniData();
+      this.kkk();
+    },
+    async apiGoods(){
+      this.goodsAll = await this.$api.getGoods()
+      this.alldata();
+      this.chushihua();
+    }
   },
   mounted() {
-    this.moniData();
-    this.kkk();
+    this.apiGoods()
   },
 
   computed: {
     allpage() {
-      return Math.ceil(this.goodsfuhe.length / 5) > 0 ? Math.ceil(this.goodsfuhe.length / 5):1;
+      return Math.ceil(this.goodsfuhe.length / 5) > 0
+        ? Math.ceil(this.goodsfuhe.length / 5)
+        : 1;
     },
   },
   watch: {
@@ -347,8 +287,8 @@ export default {
       immediate: true,
       handler(a, b) {
         if (this.pagecurr > this.allpage) {
-          if (b){
-            this.pagecurr = b
+          if (b) {
+            this.pagecurr = b;
           }
           return;
         }
@@ -369,6 +309,7 @@ export default {
       deep: true,
       handler() {
         this.breads = this.$store.state.search.breads;
+        let bbb = this.$store.state.search.b;
         this.breadid = [];
         this.breads.forEach((e) => {
           if (this.idattrs[e] || this.idattrs[e] == 0) {
@@ -378,6 +319,12 @@ export default {
         const tem = [];
         this.goodsAll.forEach((e) => {
           let dui = true;
+          if (bbb != "飞船" && bbb != "") {
+            if (e.title.indexOf(bbb) == -1) {
+              dui = false;
+            }
+          }
+
           this.breadid.forEach((r) => {
             if (e.attr.id.indexOf(r) == -1) {
               dui = false;
@@ -388,7 +335,36 @@ export default {
           }
         });
         this.goodsfuhe = tem;
-        this.pagecurr = 1
+        if (this.navscurr == 3) {
+          this.goodsfuhe.sort((a, b) => {
+            let t = a.price.replace(/,/g, "") - b.price.replace(/,/g, "");
+            return this.order ? t : -t;
+          });
+        }
+        if (this.navscurr == 0) {
+          this.goodsfuhe.sort((a, b) => {
+            let t = +a.id - +b.id;
+            return this.order ? -t : t;
+          });
+        }
+        this.pagecurr = 1;
+        this.goodsShow = this.goodsfuhe.slice(
+          (this.pagecurr - 1) * 5,
+          this.pagecurr * 5
+        );
+        if (this.pagecurr <= 3) {
+          this.showcurr = 3;
+        } else if (this.pagecurr >= this.allpage - 2) {
+          this.showcurr = this.allpage - 2;
+        } else {
+          this.showcurr = this.pagecurr;
+        }
+      },
+    },
+    goodsfuhe: {
+      deep: true,
+      handler() {
+        this.pagecurr = 1;
         this.goodsShow = this.goodsfuhe.slice(
           (this.pagecurr - 1) * 5,
           this.pagecurr * 5
@@ -591,6 +567,5 @@ export default {
   top: 5px;
   width: 50px;
   right: -60px;
-
 }
 </style>

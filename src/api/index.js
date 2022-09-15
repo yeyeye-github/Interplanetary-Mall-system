@@ -3,7 +3,6 @@ import axios from "axios";
 
 export async function autologin() {
   let tem = null
-  console.log("自动登录");
   await axios.get("/api/loginAuto").then((res) => {
     console.log(res.data);
     tem = res.data
@@ -22,4 +21,12 @@ export async function login(username, password) {
 
 export function outlogin(){
   axios.get('/api/outlogin').then(res=>res.data)
+}
+
+export async function getGoods(){
+  return await axios.get('/api/allgoods').then(res=>res.data)
+}
+
+export async function getAGood(id){
+  return await axios.get('/api/inputgoods?goodsId=' + id).then(res=>res.data)
 }

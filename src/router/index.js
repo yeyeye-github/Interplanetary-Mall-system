@@ -3,6 +3,7 @@ import home from '../pages/home'
 import register from '../pages/register'
 import login from '../pages/login'
 import search from '../pages/search'
+import detail from '../pages/detail'
 
 const originalPush = VueRouter.prototype.push
 VueRouter.prototype.push = function push(location) {
@@ -38,6 +39,11 @@ const router = new VueRouter({
             path:'/search',
             name:'search',
             component:search,
+        },
+        {
+            path:'/detail',
+            name:'detail',
+            component:detail,
         }
     ]
 })

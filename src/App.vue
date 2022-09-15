@@ -16,7 +16,13 @@ export default {
     myHeader,
     Footer,
   },
-  mounted() {
+  data() {
+    return {
+      goodsAll: [],
+      goodsMoni: [],
+    };
+  },
+  beforeMount() {
     this.autol();
   },
   methods: {
@@ -25,14 +31,43 @@ export default {
       if (tem.code == "200") {
         this.$store.dispatch("user/actUsername", tem.username);
         sessionStorage.setItem("username", tem.username);
-        if(this.$router.currentRoute.path == '/login' || this.$router.currentRoute.path == '/register'){
-          this.$router.replace('/home')
+        if (
+          this.$router.currentRoute.path == "/login" ||
+          this.$router.currentRoute.path == "/register"
+        ) {
+          this.$router.replace("/home");
         }
+      } else {
+        sessionStorage.clear("username");
       }
-      else{
-        sessionStorage.clear('username')
-      }
+      // console.log('自动登录')
     },
+    alldata() {
+      const a = [];
+      for (let index = 0; index < 50; index++) {
+        let tem = {
+          id: 10,
+          price: "999,999,999",
+          img: "./images/test.png",
+          title: "测试商品",
+          personNum: 999,
+          attr: {
+            id: [],
+          },
+        };
+        tem.id = +index + 10;
+        tem.title += (+index + 10).toString();
+        a.push(tem);
+      }
+      this.goodsMoni = a;
+      this.goodsAll.splice(10, 0, ...this.goodsMoni);
+      this.$store.state.allgoods = this.goodsAll;
+      console.log('数据加载')
+    },
+    async apiGoods(){
+      this.goodsAll = await this.$api.getGoods()
+      this.alldata();
+    }
   },
 };
 </script>
