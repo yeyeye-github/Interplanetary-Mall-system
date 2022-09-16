@@ -12,7 +12,7 @@
             <a href="#">{{ d }}</a>
           </li>
         </ul>
-        <div class="shopcar">
+        <div @click="tocar" class="shopcar">
           我的购物车
           <div class="shopcar-num">{{shopcarnum}}</div>
         </div>
@@ -40,6 +40,9 @@ export default {
       this.$router.push({
         name:'search',
       })
+    },
+    tocar(){
+      this.$router.push('/shopcar')
     }
   },
   data() {

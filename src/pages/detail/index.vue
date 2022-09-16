@@ -65,7 +65,7 @@
             <br>
             <button @click="num = +num - 1" class="jiajian">-</button>
           </div>
-          <button class="jiarugwc">加入购物车</button>
+          <button @click="jiarugouwuc($event)" class="jiarugwc">加入购物车</button>
         </div>
         <div style="color:rgb(165, 165, 165)">
           温馨提示 · 7天无理由退货（跨星系不支持）· 此商品不可使用优惠券
@@ -151,6 +151,28 @@ export default {
         this.img = require(`../search/images/${tem}.png`);
       }
     },
+    async jiarugouwuc(e){
+      e.target.disabled = true
+      let tem = await this.$api.putInShopCar(this.good.id, this.num, this.planet)
+      console.log(tem)
+      if (tem.code == '201'){
+        alert(tem.msg)
+        this.$router.push('/login')
+        e.target.disabled = false
+      }
+      else if(tem.code == '202'){
+        alert(tem.msg)
+        this.$router.push('/home')
+        e.target.disabled = false
+      }
+      else if(tem.code == '200'){
+        e.target.disabled = false
+        this.good.num = this.num
+        sessionStorage.setItem('carInfo',JSON.stringify(this.good))
+        this.$router.push('/shopcarSuccess')
+        // sessionStorage.setItem('carInfo',JSON.stringify(this.good))
+      }
+    }
   },
   mounted() {
     this.apiAGood();

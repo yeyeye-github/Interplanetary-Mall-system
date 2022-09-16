@@ -4,6 +4,8 @@ import register from '../pages/register'
 import login from '../pages/login'
 import search from '../pages/search'
 import detail from '../pages/detail'
+import shopcar from '../pages/shopcar'
+import shopcarSuccess from '../pages/shopcarSuccess'
 
 const originalPush = VueRouter.prototype.push
 VueRouter.prototype.push = function push(location) {
@@ -44,6 +46,16 @@ const router = new VueRouter({
             path:'/detail',
             name:'detail',
             component:detail,
+        },
+        {
+            path:'/shopcar',
+            name:'shopcar',
+            component:shopcar,
+        },
+        {
+            path:'/shopcarSuccess',
+            name:'shopcarSuccess',
+            component:shopcarSuccess,
         }
     ]
 })

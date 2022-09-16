@@ -30,3 +30,11 @@ export async function getGoods(){
 export async function getAGood(id){
   return await axios.get('/api/inputgoods?goodsId=' + id).then(res=>res.data)
 }
+
+export async function putInShopCar(id, num, planet){
+  return await axios.get(`/api/putinshopcar?goodsId=${id}&num=${num}&planet=${planet}`).then(res=>res.data)
+}
+
+export async function getShopCar(){
+  return await axios.get(`/api/getShopCar`).then(res=>res.data)
+}
