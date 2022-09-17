@@ -256,6 +256,57 @@ export default {
     },
     kkk() {
       this.breads = this.$store.state.search.breads;
+      this.breads = this.$store.state.search.breads;
+        let bbb = this.$store.state.search.b;
+        this.breadid = [];
+        this.breads.forEach((e) => {
+          if (this.idattrs[e] || this.idattrs[e] == 0) {
+            this.breadid.push(this.idattrs[e]);
+          }
+        });
+        const tem = [];
+        this.goodsAll.forEach((e) => {
+          let dui = true;
+          if (bbb != "飞船" && bbb != "") {
+            if (e.title.indexOf(bbb) == -1) {
+              dui = false;
+            }
+          }
+
+          this.breadid.forEach((r) => {
+            if (e.attr.id.indexOf(r) == -1) {
+              dui = false;
+            }
+          });
+          if (dui) {
+            tem.push(e);
+          }
+        });
+        this.goodsfuhe = tem;
+        if (this.navscurr == 3) {
+          this.goodsfuhe.sort((a, b) => {
+            let t = a.price.replace(/,/g, "") - b.price.replace(/,/g, "");
+            return this.order ? t : -t;
+          });
+        }
+        if (this.navscurr == 0) {
+          this.goodsfuhe.sort((a, b) => {
+            let t = +a.id - +b.id;
+            return this.order ? -t : t;
+          });
+        }
+        this.pagecurr = 1;
+        this.goodsShow = this.goodsfuhe.slice(
+          (this.pagecurr - 1) * 5,
+          this.pagecurr * 5
+        );
+        if (this.pagecurr <= 3) {
+          this.showcurr = 3;
+        } else if (this.pagecurr >= this.allpage - 2) {
+          this.showcurr = this.allpage - 2;
+        } else {
+          this.showcurr = this.pagecurr;
+        }
       // if (this.breads.indexOf(tem) == -1){
       //   this.breads.push(tem)
       // }
@@ -307,6 +358,7 @@ export default {
     },
     "$store.state.search.breads": {
       deep: true,
+      immediate:true,
       handler() {
         this.breads = this.$store.state.search.breads;
         let bbb = this.$store.state.search.b;

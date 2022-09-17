@@ -38,7 +38,7 @@ export default {
           this.$router.replace("/home");
         }
       } else {
-        sessionStorage.clear("username");
+        sessionStorage.removeItem("username");
       }
       // console.log('自动登录')
     },

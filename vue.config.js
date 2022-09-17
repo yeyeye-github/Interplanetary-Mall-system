@@ -5,6 +5,6 @@ module.exports = defineConfig({
   lintOnSave:false,
   publicPath:'./',
   devServer:{
-    proxy:'http://yeyeye.cc:5002'  //http://yeyeye.cc:5002  http://127.0.0.1:5005
+    proxy:'http://127.0.0.1:5005'  //http://yeyeye.cc:5002  http://127.0.0.1:5005
   }
 })

@@ -40,7 +40,7 @@ export default {
         this.$router.replace({
             name:'detail',
             query:{
-                goodsId:1
+                goodsId: JSON.parse(sessionStorage.getItem('carInfo')).id
             }
         })
     },

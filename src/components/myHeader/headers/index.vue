@@ -14,7 +14,7 @@
         </ul>
         <div @click="tocar" class="shopcar">
           我的购物车
-          <div class="shopcar-num">{{shopcarnum}}</div>
+          <!-- <div class="shopcar-num">{{shopcarnum}}</div> -->
         </div>
       </div>
       <div class="nav">
