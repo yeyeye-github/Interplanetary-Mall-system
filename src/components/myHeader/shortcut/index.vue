@@ -37,7 +37,7 @@
           </li>
           <li>|</li>
           <li>
-            <a href="#">我的订单</a>
+            <router-link to='/order' href="#">我的订单</router-link>
           </li>
           <li>|</li>
           <li class="zankai" @mouseover="isShowShop = true" @mouseleave="isShowShop = false">

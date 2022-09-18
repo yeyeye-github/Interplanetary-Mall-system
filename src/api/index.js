@@ -55,10 +55,14 @@ export async function changeGoodischeckAll(data){
   return await axios.get(`/api/changeGoodischeckAll?c=${data}`).then(res=>res.data)
 }
 
-export async function inputOrder(){
-  return await axios.get(`/api/inputOrder`).then(res=>res.data)
+export async function inputOrder(y){
+  return await axios.get(`/api/inputOrder?bug=${y}`).then(res=>res.data)
 }
 
 export async function pay(d){
   return await axios.get(`/api/pay?id=${d}`).then(res=>res.data)
+}
+
+export async function getOrder(){
+  return await axios.get(`/api/getOrder`).then(res=>res.data)
 }

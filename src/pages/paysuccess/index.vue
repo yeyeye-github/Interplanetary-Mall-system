@@ -5,7 +5,7 @@
         <div class="a">✔ </div> 恭喜您，支付成功啦！
       </div>
       <div>
-        <button class="btn">查看订单</button>
+        <button class="btn" @click="ck">查看订单</button>
         <button class="btn" @click="jixu">继续购物</button>
       </div>
     </div>
@@ -16,6 +16,9 @@
 export default {
   name: "paysuccess",
   methods:{
+    ck(){
+        this.$router.replace('order')
+    },
     jixu(){
         this.$router.replace('home')
     }

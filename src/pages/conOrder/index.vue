@@ -51,9 +51,9 @@ export default {
       planet: "地球",
     };
   },
-//   beforeDestroy() {
-//     localStorage.removeItem("order");
-//   },
+  beforeDestroy() {
+    localStorage.removeItem("order");
+  },
   computed:{
     yuan(){
         const tem = this.goods.reduce((a,b)=>{
@@ -64,7 +64,7 @@ export default {
   },
   methods:{
     async tijiao(){
-      const t = await this.$api.inputOrder()
+      const t = await this.$api.inputOrder(this.yuan)
       console.log(t)
       if (t.code == "200") {
         this.$router.push({

@@ -9,6 +9,7 @@ import shopcarSuccess from '../pages/shopcarSuccess'
 import conOrder from '../pages/conOrder'
 import orderSuccess from '../pages/orderSuccess'
 import paysuccess from '../pages/paysuccess'
+import order from '../pages/order'
 
 const originalPush = VueRouter.prototype.push
 VueRouter.prototype.push = function push(location) {
@@ -73,6 +74,11 @@ const router = new VueRouter({
             path:'/paysuccess',
             name:'paysuccess',
             component:paysuccess,
+        },
+        {
+            path:'/order',
+            name:'order',
+            component:order,
         }
     ]
 })
